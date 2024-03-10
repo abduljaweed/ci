@@ -3,23 +3,22 @@ name: continuos testing integration
 on: [push]
 
 jobs:
-    build:
+  build:
 
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        steps:
-            -uses: actions/checkout@v2
-            -name: Set up Python 3.8
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.8
-            -name: Installing dependencies
-            run: |
-                make install
-            -name: Lint with pylink
-            run: |
-                make lint
-            -name: Testing with Pytest
-            -run: |
-                make test
-                
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        make install
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
